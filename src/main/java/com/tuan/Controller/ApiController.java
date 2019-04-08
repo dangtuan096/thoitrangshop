@@ -176,6 +176,7 @@ public class ApiController {
 		
 	}
 	@GetMapping("XoaSanPham")
+	@Transactional
 	@ResponseBody
 	public String XoaSanPhamTheoMaSanPham(@RequestParam int masp) {
 		sanphamService.XoaSanPhamTheoMaSanPham(masp);
