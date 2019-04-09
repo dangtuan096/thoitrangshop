@@ -64,18 +64,26 @@ public class SanPhamDAO implements SanPhamimpl{
 	}
 	@Transactional
 	public boolean XoaSanPhamTheoMaSanPham(int masanpham) {
-		try {
 			Session session = sessionFactory.getCurrentSession(); 
-			//SanPham sanPham  = new SanPham();
-			//sanPham.setMasanpham(masanpham);
-			// lấy 1 sản phẩm
-			SanPham sanPham = session.get(SanPham.class, masanpham);
-			session.delete(sanPham);
-			return false;
-		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		SanPham sanPham = session.get(SanPham.class, masanpham);
+		
+		//tạo list
+		Set<ChiTietSanPham> chiTietSanPhams =  sanPham.getChitietsanpham();
+		
+		
+		for (ChiTietSanPham chiTietSanPham : chiTietSanPhams) {
+			/*ChiTietHoaDonId chiTietHoaDonId = new ChiTietHoaDonId();
+			chiTietHoaDonId.setMachitietsanpham(sanPham.getMasanpham());
+			ChiTietHoaDon chiTietHoaDon = new ChiTietHoaDon();
+			chiTietHoaDon.setChiTietHoaDonId(chiTietHoaDonId);*/
+			
+			session.createQuery("delete CHITIETHOADON WHERE machitietsanpham=" + chiTietSanPham.getMachitietsanpham()).executeUpdate();
+		
 		}
+		session.createQuery("delete CHITIETSANPNHAM WHERE masanpham=" + sanPham.getMasanpham()).executeUpdate();
+		
+		session.createQuery("delete SANPHAM WHERE masanpham=" + sanPham.getMasanpham()).executeUpdate();
+		session.delete(sanPham);
 		return false;
 	}
 
