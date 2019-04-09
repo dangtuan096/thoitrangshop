@@ -42,7 +42,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		 	<button class="btn btn-primary">Thêm Sản Phẩm</button>
 		 	<button id="xoa-sanpham" class="btn btn-info">Xóa Sản Phẩm</button>
 		 </div>
-		<table id="table-sanpham " class="table">
+		<table id="table-sanpham" class="table">
 			<thead>
 				<tr>
 					<th><div class="checkbox">
