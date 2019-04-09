@@ -80,9 +80,9 @@ public class SanPhamDAO implements SanPhamimpl{
 			session.createQuery("delete CHITIETHOADON WHERE machitietsanpham=" + chiTietSanPham.getMachitietsanpham()).executeUpdate();
 		
 		}
-		session.createQuery("delete CHITIETSANPNHAM WHERE masanpham=" + sanPham.getMasanpham()).executeUpdate();
+		session.createQuery("delete CHITIETSANPNHAM WHERE masanpham=" + masanpham).executeUpdate();
 		
-		session.createQuery("delete SANPHAM WHERE masanpham=" + sanPham.getMasanpham()).executeUpdate();
+		session.createQuery("delete SANPHAM WHERE masanpham=" + masanpham).executeUpdate();
 		session.delete(sanPham);
 		return false;
 	}
